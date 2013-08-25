@@ -12,11 +12,11 @@
 */
 Route::get('/', function()
 {
-	return View::make('people.index');
+	return View::make('users.index');
 });
-Route::get('login', function()
+Route::get('users', function()
 {
-    return 'login';
+	return View::make('users.index');
 });
 Route::post('admin', function()
 {

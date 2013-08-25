@@ -9,5 +9,9 @@ class Post extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->belongs_to('user');
 	}
+	public getAllPosts(){
+	$Posts = Post::all();
+	return $Posts;
+	}
 
 }
