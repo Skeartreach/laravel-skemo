@@ -12,12 +12,11 @@
 */
 Route::get('/', function()
 {
-	return View::make('users.index');
+	return View::make('hello');
 });
-Route::get('users', function()
-{
-	return View::make('users.index');
-});
+Route::get('users', array('uses'=>'users@index'));
+Route::get('posts', array('uses'=>'posts@index'));
+
 Route::post('admin', function()
 {
 	$Log = Input::get('id');

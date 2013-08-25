@@ -3,17 +3,11 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class user extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function posts()
 	{
 		return $this->has_many('post');
-	}
-	public function get_index() {
-	 return View::make('users.index')
-	 ->with('title', 'Users')
-	 ->with('users',User::all());
-	
 	}
 	/**
 	 * The database table used by the model.
