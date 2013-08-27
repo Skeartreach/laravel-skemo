@@ -3,7 +3,7 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class post extends Eloquent implements UserInterface, RemindableInterface {
+class Post extends Eloquent implements UserInterface, RemindableInterface {
 
 	public function posts()
 	{

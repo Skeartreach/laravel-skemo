@@ -27,9 +27,7 @@
 
     <div class="container">
       </div>
-    <script src="../bower_components/jquery/jquery.min.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../assets/js/bootswatch.js"></script>
-  </body>
-</html>
+       @section('navigation')
+        @parent
+        @endsection
 @stop
