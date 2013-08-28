@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/laravel/public',
+	'url' => 'http://localhost',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => 'aXq78L8arJOKi03cuQuOcsglC85dQDqr',
+	'key' => 'aASwdsawd65WDaSaWSdWDDW',
 
 	/*
 	|--------------------------------------------------------------------------

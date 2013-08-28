@@ -18,6 +18,7 @@
         <script src="../bower_components/bootstrap/assets/js/respond.min.js"></script>
         <![endif]-->
   </head>
+  <body>
               <div class="navbar navbar-default">
                 <div class="container">
                   <div class="navbar-header">
@@ -26,24 +27,24 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand">Skemo</a>
+                    <a class="navbar-brand" href="">Skemo</a>
                   </div>
                   <div class="navbar-collapse collapse navbar-responsive-collapse">
                     <ul class="nav navbar-nav">
                       <?php
                       if(isset($active)){
-                      if($active=='entities'){
+                      if($active=='users'){
                         print('
-                      <li class="active"><a href="./entities">Entities</a></li>
+                      <li class="active"><a href="./users">Users</a></li>
                       <li ><a href="./posts">Posts</a></li>');}
                       if($active=='posts'){
                         print('
-                      <li ><a href="./entities">Entities</a></li>
+                      <li ><a href="./users">Users</a></li>
                       <li class="active"><a href="./posts">Posts</a></li>');
                       }
                       if($active=='add'){
                         print('
-                      <li ><a href="./entities">Entities</a></li>
+                      <li ><a href="./users">Users</a></li>
                       <li ><a href="./posts">Posts</a></li>');
                       }
                     }
@@ -51,8 +52,8 @@
                         <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" >Add <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                        <li><a href="entities/new">Nouvelle entité</a></li>
-                        <li><a href="posts/new">Nouveau post</a></li>
+                        <li><a href="unew">New user</a></li>
+                        <li><a href="#">New post</a></li>
                         </ul>
                         </li>
                     </ul>
@@ -63,18 +64,14 @@
                 </div><!-- /.container -->
               </div><!-- /.navbar -->
     <body>
-      @if(Session::has('message'))
-      <p style="color: green">{{ Session::get('message') }}</p>
-      @endif
-      
         @section('content')
-  
+         
         @show
         @section('footer')
 
 
   </body>
-  <footer style="text-align:left; padding-left:20px;">
+  <footer>
     &copy; Copyright skdev.ch - BG
   </footer>
 </html>

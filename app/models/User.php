@@ -3,18 +3,14 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class user extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	public function posts()
-	{
-		return $this->has_many('post');
-	}
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'users';
+	public static $table = 'users';
 
 	/**
 	 * The attributes excluded from the model's JSON form.
