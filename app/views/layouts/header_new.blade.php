@@ -27,11 +27,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-<<<<<<< HEAD
                     <a class="navbar-brand">Skemo</a>
-=======
-                    <a class="navbar-brand" href="">Skemo</a>
->>>>>>> f2ffdea5ef53ad83958677dd15b0b0538ab86a74
                   </div>
                   <div class="navbar-collapse collapse navbar-responsive-collapse">
                     <ul class="nav navbar-nav">
@@ -39,21 +35,13 @@
                       if(isset($active)){
                       if($active=='add'){
                         print('
-<<<<<<< HEAD
                       <li ><a href="./entities">Entities</a></li>
-=======
-                      <li ><a href="./users">Users</a></li>
->>>>>>> f2ffdea5ef53ad83958677dd15b0b0538ab86a74
                       <li ><a href="./posts">Posts</a></li>');
                       }
                     }
                     else{
                       print('
-<<<<<<< HEAD
                       <li ><a href="../entities">Entities</a></li>
-=======
-                      <li ><a href="../users">Users</a></li>
->>>>>>> f2ffdea5ef53ad83958677dd15b0b0538ab86a74
                       <li ><a href="../posts">Posts</a></li>
                       ');
 
@@ -62,13 +50,8 @@
                         <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" >Add <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-<<<<<<< HEAD
                         <li><a href="../entities/new">Nouvelle entité</a></li>
                         <li><a href="../posts/new">Nouveau post</a></li>
-=======
-                        <li><a href="../users/new">New user</a></li>
-                        <li><a href="../posts/new">New post</a></li>
->>>>>>> f2ffdea5ef53ad83958677dd15b0b0538ab86a74
                         </ul>
                         </li>
                     </ul>
@@ -86,11 +69,7 @@
 
 
   </body>
-<<<<<<< HEAD
   <footer style="text-align:left; padding-left:20px;">
-=======
-  <footer>
->>>>>>> f2ffdea5ef53ad83958677dd15b0b0538ab86a74
     &copy; Copyright skdev.ch - BG
   </footer>
 </html>
