@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class Entities extends Migration {
+class Branches extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -11,12 +11,9 @@ class Entities extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('entities', function($table){
+		Schema::create('branches', function($table){
 			$table->increments('id');
 			$table->string('name',50);
-			$table->integer('branch');
-			$table->string('email',50)->nullable();
-			$table->string('phone',50)->nullable();
 			$table->timestamps();
 		});
 	}
@@ -28,7 +25,7 @@ class Entities extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('entities');
+		Schema::drop('branches');
 	}
 
 }

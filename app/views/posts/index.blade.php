@@ -19,13 +19,14 @@
                     <th>Créé par</th>
                     <th>Importance</th>
                     <th>Date de création</th>
+                    <th colspan="2">Options</th>
                   </tr>
                 </thead>
                 <tbody>
 				@foreach($posts as $post)
                   <tr>
                     <td>{{ $post->id }}</td>
-                    <td width="30%">{{ $post->content }}</td>
+                    <td width="20%">{{ substr($post->content,0,40) }}</td>
                     @if($post->people1!=0)
                     <td>{{ $entities[($post->people1-1)]->name }}</td>
                     @else
@@ -41,19 +42,20 @@
                     @else
                     <td>N/A</td>
                     @endif
-                    @if($post->enddate<date('Y-m-d H:m:s'))
-                      <td><center><button type="button" class="btn btn-danger btn-xs" title="A terminer aujourd'hui">
-                        <span class="glyphicon glyphicon-warning-sign"></span>
-                        </button></td></center>
-                    @else
+                    
                       @if($post->isdone == '1')
                         <td><center><button type="button" class="btn btn-success btn-xs "title="Terminé" >
                         <span class="glyphicon glyphicon-ok-sign"></span>
                         </button></td></center>
                       @else
-                        <td><center><button type="button" class="btn btn-warning btn-xs"title="A terminer sous peu" >
-                        <span class="glyphicon glyphicon-minus-sign"></span>
-                        </button></td></center>
+                          @if($post->enddate<date('Y-m-d H:m:s'))
+                          <td><center><button type="button" class="btn btn-danger btn-xs" title="A terminer aujourd'hui">
+                            <span class="glyphicon glyphicon-warning-sign"></span>
+                            </button></td></center>
+                             @else
+                            <td><center><button type="button" class="btn btn-warning btn-xs"title="A terminer sous peu" >
+                            <span class="glyphicon glyphicon-minus-sign"></span>
+                            </button></td></center>
                       @endif
                     @endif
                     <?php
@@ -61,11 +63,17 @@
                     print('<td>'.$enddate.'</td>');
                     ?>
                     <td>{{ $entities[($post->user_id-1)]->name }}</td>
-                    <td>{{ $post->importance }}</td>
+                    <td><center>{{ $post->importance }}</td></center>
                     <?php
                     $date = date("d-m-Y", strtotime($post->created_at));
                     print('<td>'.$date.'</td>');
                     ?>
+                    <td><center><button type="button" class="btn btn-success btn-xs"title="Détails" >
+                    <span class="glyphicon glyphicon-leaf"></span>
+                    </button></td></center>
+                    <td><center><button type="button" class="btn btn-danger btn-xs"title="Supprimer" >
+                    <span class="glyphicon glyphicon-remove"></span>
+                    </button></td></center>
                   </tr>
 				  @endforeach
                 </tbody>

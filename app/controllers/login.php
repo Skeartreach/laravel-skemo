@@ -1,6 +1,6 @@
 <?php
 
-class entities extends \BaseController {
+class login extends \BaseController {
 
 	public $restful = true;
 	/**
@@ -10,28 +10,29 @@ class entities extends \BaseController {
 	 */
 	public function index()
 	{
-		$entities = DB::table('entities')->orderBy('id')->get();
-		$branches = DB::table('branches')->get();
+		
+		return View::make('login.index');
 
-		return View::make('entities.index')
-		->with('title','entities')
-		->with('entities', $entities)
-		->with('branches', $branches)
-		->with('active', 'entities');
 	}
 
 	public function insert()
 	{
 		
-		DB::table('entities')->insert(
-		array('name' => Input::get('frm_name'),
-		'branch' => Input::get('frm_branch'),  
-		'email' => Input::get('frm_email'),
-		'phone' => Input::get('frm_phone'), 
-		'created_at' => date('Y-m-d'), 
-		'updated_at' => date('Y-m-d'))
-	); 
-		return Redirect::to('./entities')->with('message',"L'entité a bien été enregistré")->withInput();
+		Input::get('frm_content');
+		return Redirect::to('./posts')->with('message',"Le post a bien été enregistré")->withInput();
+	}
+
+	public function check()
+	{
+		return Redirect::to('./posts')->with('message',"Vous vous êtes connecté");
+	}
+
+	public function logout()
+	{
+		
+		Session::flush();
+	
+		return Redirect::to('./posts');
 	}
 
 	/**
@@ -41,14 +42,17 @@ class entities extends \BaseController {
 	 */
 	public function create()
 	{
+		$posts = DB::table('posts')->orderBy('enddate','ASC')->get();
 		$entities = DB::table('entities')->get();
-		$branches = DB::table('branches')->get();
 
-		return View::make('entities.new')
+		return View::make('posts.new')
+		->with('title','newPost')
+		->with('posts', $posts)
 		->with('entities', $entities)
-		->with('branches', $branches)
 		->with('title', "Ajout d'un nouveau post");
 	}
+
+
 
 	/**
 	 * Store a newly created resource in storage.

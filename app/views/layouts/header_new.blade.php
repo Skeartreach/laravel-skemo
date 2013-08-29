@@ -1,3 +1,9 @@
+<?php
+if (!(Session::has('username')))
+{
+    print('<meta http-equiv="refresh" content="0;url='.URL::to('./login').'">'); 
+}else{
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -36,13 +42,15 @@
                       if($active=='add'){
                         print('
                       <li ><a href="./entities">Entities</a></li>
-                      <li ><a href="./posts">Posts</a></li>');
+                      <li ><a href="./posts">Posts</a></li>
+                      <li ><a href="./branches">Branches</a></li>');
                       }
                     }
                     else{
                       print('
                       <li ><a href="../entities">Entities</a></li>
                       <li ><a href="../posts">Posts</a></li>
+                      <li ><a href="../branches">Branches</a></li>
                       ');
 
                     }
@@ -52,6 +60,7 @@
                         <ul class="dropdown-menu">
                         <li><a href="../entities/new">Nouvelle entité</a></li>
                         <li><a href="../posts/new">Nouveau post</a></li>
+                        <li><a href="../branches/new">Nouvelle branche</a></li>
                         </ul>
                         </li>
                     </ul>
@@ -66,7 +75,6 @@
          
         @show
         @section('footer')
-
 
   </body>
   <footer style="text-align:left; padding-left:20px;">

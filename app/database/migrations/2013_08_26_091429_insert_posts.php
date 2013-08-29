@@ -13,7 +13,7 @@ class InsertPosts extends Migration {
 	{
 		DB::table('posts')->insert(
 		array(
-			array('content' => "Premier post", 'people1' => '2', 'people2' => '4', 'people3' => '3',
+			array('content' => "Premier post", 'people1' => '2', 'people2' => '3', 'people3' => '3',
 				'isdone' => '0','enddate' => date('Y-m-d'),'user_id' => '2','importance' => '5',
 				'created_at' =>date('Y-m-d'), 'updated_at' =>date('Y-m-d')),
 			)

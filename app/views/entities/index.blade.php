@@ -20,7 +20,7 @@
                   <tr>
                     <td>{{ $entity->id }}</td>
                     <td>{{ $entity->name }}</td>
-                    <td>{{ $entity->branch }}</td>
+                    <td>{{ $branches[($entity->branch-1)]->name}}</td>
                     <td>{{ $entity->email }}</td>
                     <td>{{ $entity->phone }}</td>
                   </tr>

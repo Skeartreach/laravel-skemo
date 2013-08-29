@@ -22,7 +22,7 @@
                     <label for="frm_content" class="col-lg-2 control-label">Contenu</label>
 
                     <div class="col-lg-10">
-                      {{ Form::textarea("frm_content", null, array('rows' => '3', 'class'=>'form-control', 'required')) }}
+                      {{ Form::textarea("frm_content", null, array('rows' => '3', 'class'=>'form-control', 'required' , 'placeholder'=>"Message")) }}
                     </div>
                   </div>
                    <!--  People de 1 à 5 -->  
@@ -44,7 +44,7 @@
                    <div class="form-group">
                     <label for="frm_enddate" class="col-lg-2 control-label" >Date d'échéance</label>
                     <div class="col-lg-10">
-                      {{ Form::date('frm_enddate', null, array('class' => 'form-control', '')) }}
+                      {{ Form::date('frm_enddate', null, array('class' => 'form-control', 'required')) }}
                     </div>
                   </div>
 

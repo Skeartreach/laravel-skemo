@@ -14,10 +14,16 @@
 Route::get('/', function()
 {
 	return View::make('hello');
-});
+}); 
 Route::get('entities', array('uses'=>'entities@index'));
 Route::get('posts', array('uses'=>'posts@index'));
+Route::get('login', array('uses'=>'login@index'));
+Route::get('logout', array('uses'=>'login@logout'));
+Route::get('branches', array('uses'=>'branches@index'));
 Route::get('posts/new', array('uses'=>'posts@create'));
 Route::any('posts/add', array('uses'=>'posts@insert'));
 Route::get('entities/new', array('uses'=>'entities@create'));
 Route::any('entities/add', array('uses'=>'entities@insert'));
+Route::any('login/check', array('uses'=>'login@check'));
+Route::get('branches/new', array('uses'=>'branches@create'));
+Route::any('branches/add', array('uses'=>'branches@insert'));

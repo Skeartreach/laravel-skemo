@@ -1,3 +1,9 @@
+<?php
+if (!(Session::has('username')))
+{
+    print('<meta http-equiv="refresh" content="0;url='.URL::to('login').'">'); 
+}else{
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -35,16 +41,25 @@
                       if($active=='entities'){
                         print('
                       <li class="active"><a href="./entities">Entities</a></li>
-                      <li ><a href="./posts">Posts</a></li>');}
+                      <li ><a href="./posts">Posts</a></li>
+                      <li ><a href="./branches">Branches</a></li>');}
                       if($active=='posts'){
                         print('
                       <li ><a href="./entities">Entities</a></li>
-                      <li class="active"><a href="./posts">Posts</a></li>');
+                      <li class="active"><a href="./posts">Posts</a></li>
+                      <li ><a href="./branches">Branches</a></li>');
                       }
                       if($active=='add'){
                         print('
                       <li ><a href="./entities">Entities</a></li>
-                      <li ><a href="./posts">Posts</a></li>');
+                      <li ><a href="./posts">Posts</a></li>
+                      <li ><a href="./branches">Branches</a></li>');
+                      }
+                      if($active=='branches'){
+                        print('
+                      <li ><a href="./entities">Entities</a></li>
+                      <li ><a href="./posts">Posts</a></li>
+                      <li class="acive"><a href="./branches">Branches</a></li>');
                       }
                     }
                       ?>
@@ -53,18 +68,27 @@
                         <ul class="dropdown-menu">
                         <li><a href="entities/new">Nouvelle entité</a></li>
                         <li><a href="posts/new">Nouveau post</a></li>
+                        <li><a href="branches/new">Nouvelle branche</a></li>
                         </ul>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                  
-                  </ul>
+                    <li class="dropdown">
+                  <?php print("<a href='' class='dropdown-toggle' data-toggle='dropdown' >".Session::get('username')." <b class='caret'></b></a>");?>  
+                        <ul class="dropdown-menu">
+                        <li><a href="logout">Déconnexion</a></li>
+                        </ul>
+                        </li>
                   </div><!-- /.nav-collapse -->
                 </div><!-- /.container -->
               </div><!-- /.navbar -->
     <body>
       @if(Session::has('message'))
-      <p style="color: green">{{ Session::get('message') }}</p>
+      <div class="alert alert-dismissable alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h4>Information</h4>
+                <p>{{ Session::get('message') }}</p>
+              </div>
       @endif
       
         @section('content')
@@ -79,3 +103,4 @@
   </footer>
 </html>
 @show
+<?php }?>

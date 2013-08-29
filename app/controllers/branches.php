@@ -1,6 +1,6 @@
 <?php
 
-class entities extends \BaseController {
+class branches extends \BaseController {
 
 	public $restful = true;
 	/**
@@ -10,28 +10,24 @@ class entities extends \BaseController {
 	 */
 	public function index()
 	{
-		$entities = DB::table('entities')->orderBy('id')->get();
-		$branches = DB::table('branches')->get();
+		$branches = DB::table('branches')->orderBy('id')->get();
 
-		return View::make('entities.index')
-		->with('title','entities')
-		->with('entities', $entities)
+		return View::make('branches.index')
+		->with('title','branches')
 		->with('branches', $branches)
-		->with('active', 'entities');
+		->with('active', 'branches');
 	}
 
 	public function insert()
 	{
 		
-		DB::table('entities')->insert(
-		array('name' => Input::get('frm_name'),
-		'branch' => Input::get('frm_branch'),  
-		'email' => Input::get('frm_email'),
-		'phone' => Input::get('frm_phone'), 
+		DB::table('branches')->insert(
+		array(
+		'name' => Input::get('frm_name'), 
 		'created_at' => date('Y-m-d'), 
 		'updated_at' => date('Y-m-d'))
 	); 
-		return Redirect::to('./entities')->with('message',"L'entité a bien été enregistré")->withInput();
+		return Redirect::to('./posts')->with('message',"La branche a bien été enregistrée")->withInput();
 	}
 
 	/**
@@ -41,11 +37,9 @@ class entities extends \BaseController {
 	 */
 	public function create()
 	{
-		$entities = DB::table('entities')->get();
 		$branches = DB::table('branches')->get();
 
-		return View::make('entities.new')
-		->with('entities', $entities)
+		return View::make('branches.new')
 		->with('branches', $branches)
 		->with('title', "Ajout d'un nouveau post");
 	}

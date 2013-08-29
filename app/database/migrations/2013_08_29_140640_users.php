@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class Entities extends Migration {
+class Users extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -11,12 +11,13 @@ class Entities extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('entities', function($table){
+		Schema::create('users', function($table){
 			$table->increments('id');
-			$table->string('name',50);
-			$table->integer('branch');
-			$table->string('email',50)->nullable();
-			$table->string('phone',50)->nullable();
+			$table->string('username',50);
+			$table->string('password',50);
+			$table->string('firstname',50);
+			$table->string('lastname',50);
+			$table->string('email',50);
 			$table->timestamps();
 		});
 	}
@@ -28,7 +29,7 @@ class Entities extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('entities');
+		Schema::drop('users');
 	}
 
 }
