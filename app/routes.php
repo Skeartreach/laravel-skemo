@@ -10,6 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+use Illuminate\Database\Eloquent\HttpNotFoundException;
 
 Route::get('/', function()
 {
@@ -27,3 +28,8 @@ Route::any('entities/add', array('uses'=>'entities@insert'));
 Route::any('login/check', array('uses'=>'login@check'));
 Route::get('branches/new', array('uses'=>'branches@create'));
 Route::any('branches/add', array('uses'=>'branches@insert'));
+
+App::missing(function($exception)
+{
+  return Redirect::to('posts');
+});

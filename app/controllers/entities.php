@@ -22,7 +22,10 @@ class entities extends \BaseController {
 
 	public function insert()
 	{
-		
+		if (!(Session::has('username')))
+		{
+		    	return Redirect::to('./login'); 
+		}else{
 		DB::table('entities')->insert(
 		array('name' => Input::get('frm_name'),
 		'branch' => Input::get('frm_branch'),  
@@ -32,6 +35,8 @@ class entities extends \BaseController {
 		'updated_at' => date('Y-m-d'))
 	); 
 		return Redirect::to('./entities')->with('message',"L'entité a bien été enregistré")->withInput();
+	}
+
 	}
 
 	/**

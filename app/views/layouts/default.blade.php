@@ -2,7 +2,8 @@
 if (!(Session::has('username')))
 {
     print('<meta http-equiv="refresh" content="0;url='.URL::to('login').'">'); 
-}else{
+}
+else{
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -102,5 +103,5 @@ if (!(Session::has('username')))
     &copy; Copyright skdev.ch - BG
   </footer>
 </html>
-@show
 <?php }?>
+@show

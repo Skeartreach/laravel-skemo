@@ -30,7 +30,13 @@
                   </div>
                 </div><!-- /.container -->
               </div><!-- /.navbar -->
-
+      @if(Session::has('message'))
+      <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h4>Attention</h4>
+                <p>{{ Session::get('message') }}</p>
+              </div>
+      @endif
   <body>
       <div class="col-lg-2" style='margin-right: 40%; margin-left: 40%; margin-top: 8%;'>
           {{ Form::open(array('url' => 'login/check', 'method' => 'put' ,'class' => 'bs-example form-horizontal')) }}

@@ -22,7 +22,10 @@ class posts extends \BaseController {
 
 	public function insert()
 	{
-		
+		if (!(Session::has('username')))
+		{
+		    	return Redirect::to('./login'); 
+		}else{
 		DB::table('posts')->insert(
 		array('content' => Input::get('frm_content'),
 		'people1' => Input::get('frm_people1'), 
@@ -36,6 +39,7 @@ class posts extends \BaseController {
 		'updated_at' => date('Y-m-d'))
 	); 
 		return Redirect::to('./posts')->with('message',"Le post a bien été enregistré")->withInput();
+	}
 	}
 
 	/**

@@ -20,7 +20,10 @@ class branches extends \BaseController {
 
 	public function insert()
 	{
-		
+		if (!(Session::has('username')))
+		{
+		    	return Redirect::to('./login'); 
+		}else{
 		DB::table('branches')->insert(
 		array(
 		'name' => Input::get('frm_name'), 
@@ -28,6 +31,7 @@ class branches extends \BaseController {
 		'updated_at' => date('Y-m-d'))
 	); 
 		return Redirect::to('./posts')->with('message',"La branche a bien été enregistrée")->withInput();
+	}
 	}
 
 	/**

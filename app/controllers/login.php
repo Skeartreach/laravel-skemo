@@ -14,7 +14,6 @@ class login extends \BaseController {
 		return View::make('login.index');
 
 	}
-
 	public function insert()
 	{
 		
@@ -24,7 +23,31 @@ class login extends \BaseController {
 
 	public function check()
 	{
-		return Redirect::to('./posts')->with('message',"Vous vous êtes connecté");
+
+		$name = Input::get('frm_username');
+		if(isset($name))
+		{
+			$users = DB::table('users')->get();
+			foreach ($users as $user)
+				{
+					if($user->username == Input::get('frm_username')){
+				    	$txtUsername = $user->username;
+					    if($user->password == sha1(Input::get('frm_password'))){
+					    $txtPassword = sha1(Input::get('frm_username'));
+						}
+					}
+				}
+			if(isset($txtPassword)&& isset($txtUsername))
+			{
+				Session::put('username', Input::get('frm_username'));
+				return Redirect::to('./posts')->with('message',"Vous vous êtes connecté");
+			}
+			else{
+				return Redirect::to('login')->with('message',"Identifiant ou mot de passe erroné.");
+			}
+		}else{
+		return Redirect::to('./posts');
+		}
 	}
 
 	public function logout()
@@ -32,7 +55,7 @@ class login extends \BaseController {
 		
 		Session::flush();
 	
-		return Redirect::to('./posts');
+		return Redirect::to('./login')->with('message',"Vous vous êtes déconnecté.");
 	}
 
 	/**

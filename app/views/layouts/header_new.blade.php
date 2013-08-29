@@ -81,4 +81,5 @@ if (!(Session::has('username')))
     &copy; Copyright skdev.ch - BG
   </footer>
 </html>
+<?php }?>
 @show
