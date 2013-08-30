@@ -3,15 +3,20 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Post extends Eloquent implements UserInterface, RemindableInterface {
+class Post extends Eloquent {
 
-	public function posts()
-	{
-		return $this->belongs_to('user');
-	}
-	public getAllPosts(){
-		$Posts = Post::all();
-		return $Posts;
-	}
-
+    protected $table='posts';
+ 
+    public $timestamps = FALSE;
+ 
+    protected $guarded = array();
+ 
+    public static $rules = array(
+		'content' => 'required',
+		'isdone' => 'required',
+		'enddate' => 'required',
+		'isdone' => 'required',
+		'user_id' => 'required',
+		'importance' => 'required'
+	);
 }

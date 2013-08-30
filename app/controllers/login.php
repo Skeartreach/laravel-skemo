@@ -32,6 +32,7 @@ class login extends \BaseController {
 				{
 					if($user->username == Input::get('frm_username')){
 				    	$txtUsername = $user->username;
+				    	$txtUserId = $user->id;
 					    if($user->password == sha1(Input::get('frm_password'))){
 					    $txtPassword = sha1(Input::get('frm_username'));
 						}
@@ -39,7 +40,11 @@ class login extends \BaseController {
 				}
 			if(isset($txtPassword)&& isset($txtUsername))
 			{
+				if($user->isadmin == 1){
+					Session::put('isadmin', $user->isadmin);
+				}
 				Session::put('username', Input::get('frm_username'));
+				Session::put('user_id', $txtUserId);
 				return Redirect::to('./posts')->with('message',"Vous vous êtes connecté");
 			}
 			else{

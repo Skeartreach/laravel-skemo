@@ -17,6 +17,7 @@ class Users extends Migration {
 			$table->string('password',50);
 			$table->string('firstname',50);
 			$table->string('lastname',50);
+			$table->boolean('isadmin');
 			$table->string('email',50);
 			$table->timestamps();
 		});

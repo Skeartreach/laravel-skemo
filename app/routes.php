@@ -28,6 +28,10 @@ Route::any('entities/add', array('uses'=>'entities@insert'));
 Route::any('login/check', array('uses'=>'login@check'));
 Route::get('branches/new', array('uses'=>'branches@create'));
 Route::any('branches/add', array('uses'=>'branches@insert'));
+Route::get('posts/close/{id}',array('uses'=>'posts@close'));
+Route::get('posts/delete/{id}',array('uses'=>'posts@destroy'));
+Route::get('posts/show/{id}',array('uses'=>'posts@show'));
+Route::any('posts/edit', array('uses'=>'posts@update'));
 
 App::missing(function($exception)
 {

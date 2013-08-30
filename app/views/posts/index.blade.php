@@ -19,7 +19,10 @@
                     <th>Créé par</th>
                     <th>Importance</th>
                     <th>Date de création</th>
-                    <th colspan="2">Options</th>
+                     <?php if (Session::get('isadmin'))
+                        {   ?>
+                    <th colspan="3">Options</th>
+                    <?php } ?>
                   </tr>
                 </thead>
                 <tbody>
@@ -62,19 +65,43 @@
                     $enddate = date("d-m-Y", strtotime($post->enddate));
                     print('<td>'.$enddate.'</td>');
                     ?>
-                    <td>{{ $entities[($post->user_id-1)]->name }}</td>
+                    <td>{{ $users[$post->user_id-1]->firstname." ".$users[$post->user_id-1]->lastname }}</td>
                     <td><center>{{ $post->importance }}</td></center>
                     <?php
                     $date = date("d-m-Y", strtotime($post->created_at));
                     print('<td>'.$date.'</td>');
+                    if (Session::get('isadmin'))
+                        {       
                     ?>
-                    <td><center><button type="button" class="btn btn-success btn-xs"title="Détails" >
-                    <span class="glyphicon glyphicon-leaf"></span>
-                    </button></td></center>
-                    <td><center><button type="button" class="btn btn-danger btn-xs"title="Supprimer" >
-                    <span class="glyphicon glyphicon-remove"></span>
-                    </button></td></center>
+                    <td>
+                      <center>
+                        <?php print('<a href="./posts/close/'.$post->id.'">');?> 
+                        <div class="btn btn-success btn-xs" title="Terminer">
+                          <span class="glyphicon glyphicon-ok"</span>          
+                        </div>
+                        <?php print('</a>');?> 
+                      </center>
+                    </td>                                 
+                    <td>
+                      <center>
+                        <?php print('<a href="./posts/show/'.$post->id.'">');?> 
+                        <div class="btn btn-warning btn-xs" title="Détails">                         
+                          <span class="glyphicon glyphicon-leaf"</span>   
+                        </div>
+                        <?php print('</a>');?> 
+                      </center>
+                    </td>    
+                    <td>
+                      <center>
+                        <?php print('<a href="./posts/delete/'.$post->id.'">');?> 
+                        <div class="btn btn-danger btn-xs" title="Supprimer">                    
+                          <span class="glyphicon glyphicon-remove icon-white"</span>                    
+                        </div>
+                        <?php print('</a>');?> 
+                      </center>
+                    </td>    
                   </tr>
+                  <?php }?>
 				  @endforeach
                 </tbody>
               </table>

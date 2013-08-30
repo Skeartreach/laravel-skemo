@@ -85,11 +85,20 @@ else{
               </div><!-- /.navbar -->
     <body>
       @if(Session::has('message'))
-      <div class="alert alert-dismissable alert-success">
+      @if(Session::get('type')== 'warning')
+      <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h4>Attention</h4>
+                <p>{{ Session::get('message') }}</p>
+              </div>
+              @else
+              <div class="alert alert-dismissable alert-success">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 <h4>Information</h4>
                 <p>{{ Session::get('message') }}</p>
               </div>
+
+       @endif
       @endif
       
         @section('content')
